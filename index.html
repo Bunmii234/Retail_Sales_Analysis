@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunmi | Data Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">BUNMI_ANALYTICS</div>
+        <ul>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Skills</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+   <section class="container">
+    <h1>Retail Sales Performance Analysis</h1>
+    <p class="project-desc">
+        A full-stack data project transforming raw SQL data into an interactive Excel Dashboard.
+    </p>
+
+    <div class="visual-header">
+        <h3>Interactive Dashboard Preview</h3>
+        <div class="image-box">
+            <img src="dashboard.png" alt="Excel Dashboard Screenshot" style="width:100%; border-radius:5px;">
+            <p class="caption">Snapshot of the Excel Pivot Chart and Gender Slicers.</p>
+        </div>
+    </div>
+
+    <h3>Summary Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Age Group</th>
+                <th>Product Category</th>
+                <th>Total Transactions</th>
+                <th>Total Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>18-24</td><td>Beauty</td><td>48</td><td>$26,020</td></tr>
+            <tr><td>25-40</td><td>Clothing</td><td>105</td><td>$56,480</td></tr>
+            <tr><td>41-60</td><td>Electronics</td><td>152</td><td>$64,635</td></tr>
+            <tr><td>60+</td><td>Electronics</td><td>43</td><td>$24,065</td></tr>
+        </tbody>
+    </table>
+
+    <div class="sql-section">
+        <h3>The SQL Logic</h3>
+        <pre><code>
+SELECT 
+    CASE 
+        WHEN Age <= 24 THEN '18-24'
+        WHEN Age <= 40 THEN '25-40'
+        WHEN Age <= 60 THEN '41-60'
+        ELSE '60+' 
+    END AS Age_Group,
+    Product_Category,
+    SUM(Total_Amount) AS Revenue
+FROM retail_sales_dataset
+GROUP BY 1, 2;
+        </code></pre>
+    </div>
+
+    <div class="action-area">
+        <a href="Retail_Sales_Analysis_Dashboard.xlsx" class="btn-download">📂 Download Excel Report</a>
+        <a href="retail_queries.sql" class="btn-secondary">📜 View Full SQL Script</a>
+    </div>
+</section>
+
+</body>
+</html>
